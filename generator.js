@@ -1,18 +1,6 @@
-const fs = require("fs");
-const faker = require("faker");
+import fs from "fs";
+import randomNames from "./randomName.js";
 
-function randomName() {
-  names = "";
-  for (let i = 0; i < 1000; i++) {
-    names += faker.name.findName();
-    names += "\n";
-  }
-  return names;
-}
-
-console.log("Listo para escribir archivo");
-fs.writeFile("names.txt", randomName(), function (err) {
-  if (err) {
-    return console.error(err);
-  }
+fs.writeFile("names.txt", randomNames, (err) => {
+  err ? console.error(err) : console.log("Nombres Generados Exitosamente");
 });
